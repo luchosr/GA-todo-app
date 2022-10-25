@@ -10,8 +10,8 @@ const TodoForm = ({ addTodo }) => {
     ReactGA.event({
       action: "submit_action",
       category: "submit_category",
-      label: "soy el label de submit",
-      value: "soy el valor de submit",
+      label: `${value}`,
+      value: 2,
     });
     addTodo(value);
     setValue("");
