@@ -3,7 +3,11 @@ import "./App.css";
 import React from "react";
 import Todo from "./Todo.component";
 import TodoForm from "./TodoForm.component";
+import ReactGA from "react-ga4";
+
 import "./App.css";
+
+ReactGA.initialize("G-H46V125W6P");
 
 function App() {
   const [todos, setTodos] = React.useState([
@@ -32,11 +36,23 @@ function App() {
     setTodos(newTodos);
   };
 
+  const removeTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
   return (
     <div className="app">
       <div className="todo-list">
         {todos.map((todo, index) => (
-          <Todo key={index} index={index} todo={todo} />
+          <Todo
+            key={index}
+            index={index}
+            todo={todo}
+            completeTodo={completeTodo}
+            removeTodo={removeTodo}
+          />
         ))}
         <TodoForm addTodo={addTodo} />
       </div>

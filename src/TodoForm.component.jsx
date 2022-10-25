@@ -1,4 +1,5 @@
 import React from "react";
+import ReactGA from "react-ga4";
 
 const TodoForm = ({ addTodo }) => {
   const [value, setValue] = React.useState("");
@@ -6,6 +7,12 @@ const TodoForm = ({ addTodo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value) return;
+    ReactGA.event({
+      action: "submit_action",
+      category: "submit_category",
+      label: "submit_label",
+      value: value,
+    });
     addTodo(value);
     setValue("");
   };
