@@ -11,7 +11,7 @@ const TodoForm = ({ addTodo }) => {
       action: "submit_action",
       category: "submit_category",
       label: "submit_label",
-      value: value,
+      value: "submit_value",
     });
     addTodo(value);
     setValue("");
